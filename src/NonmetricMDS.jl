@@ -1,5 +1,5 @@
 """
-    nMDS
+    NonmetricMDS
 
 Ordination of a dissimilarity matrix: non-metric multidimensional scaling
 ([`nmds`](@ref)) and principal coordinates analysis ([`pcoa`](@ref)).
@@ -8,7 +8,7 @@ Ordination of a dissimilarity matrix: non-metric multidimensional scaling
 (isotonic) regression, from several starts, as `vegan::metaMDS` does with
 `monoMDS`. The solution is centred and rotated to its principal axes.
 """
-module nMDS
+module NonmetricMDS
 
 using LinearAlgebra, Random, Statistics
 using Printf: @sprintf

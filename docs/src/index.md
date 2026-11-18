@@ -1,14 +1,14 @@
 ```@meta
-CurrentModule = nMDS
+CurrentModule = NonmetricMDS
 ```
 
-# nMDS
+# NonmetricMDS
 
-Documentation for [nMDS](https://github.com/EvoArt/nMDS.jl).
+Documentation for [NonmetricMDS](https://github.com/EvoArt/NonmetricMDS.jl).
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [nMDS]
+Modules = [NonmetricMDS]
 ```

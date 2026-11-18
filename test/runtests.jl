@@ -1,13 +1,13 @@
-using nMDS, Test, LinearAlgebra, Random, Statistics, Distances, StableRNGs
+using NonmetricMDS, Test, LinearAlgebra, Random, Statistics, Distances, StableRNGs
 
 eucl(X) = pairwise(Euclidean(), X; dims=1)
 
-@testset "nMDS" begin
+@testset "NonmetricMDS" begin
     @testset "isotonic regression" begin
         rng = StableRNG(1)
         for _ in 1:50
             y = randn(rng, 30)
-            f = nMDS.isotonic(y)
+            f = NonmetricMDS.isotonic(y)
             @test issorted(f)
             @test sum(f) ≈ sum(y)                       # PAVA preserves the mean
             # optimal: no small monotone perturbation lowers the squared error
@@ -16,8 +16,8 @@ eucl(X) = pairwise(Euclidean(), X; dims=1)
                 @test sum(abs2, f .- y) <= sum(abs2, g .- y) + 1e-12
             end
         end
-        @test nMDS.isotonic([3.0, 1.0, 2.0]) == [2.0, 2.0, 2.0]
-        @test nMDS.tie_blocks([1, 1, 2, 3, 3, 3]) == [1:2, 3:3, 4:6]
+        @test NonmetricMDS.isotonic([3.0, 1.0, 2.0]) == [2.0, 2.0, 2.0]
+        @test NonmetricMDS.tie_blocks([1, 1, 2, 3, 3, 3]) == [1:2, 3:3, 4:6]
     end
 
     @testset "PCoA recovers Euclidean configurations" begin
