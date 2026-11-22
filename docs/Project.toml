@@ -1,3 +1,6 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 NonmetricMDS = "3b8cdc9e-924e-4909-9a51-b97410cd1b6d"
+
+[compat]
+Documenter = "1"
