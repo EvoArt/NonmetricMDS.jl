@@ -63,6 +63,13 @@ eucl(X) = pairwise(Euclidean(), X; dims=1)
         @test size(nmds(D, 3).points) == (20, 3)
         @test occursin("stress", sprint(show, MIME("text/plain"), r))
         @test occursin("explained", sprint(show, MIME("text/plain"), pcoa(D)))
+        @test length(r) == 2
+        @test startswith(sprint(show, r), "NMDSResult(20 points, 2 dims, stress = ")
+        @test sprint(show, pcoa(D)) == "PCoAResult(20 points, $(size(pcoa(D).points, 2)) axes)"
+        # the serial path gives the same answer as the threaded one
+        rs = nmds(D; tries=4, rng=StableRNG(7), threaded=false)
+        rt = nmds(D; tries=4, rng=StableRNG(7), threaded=true)
+        @test rs.stress ≈ rt.stress
     end
 
     @testset "input checks" begin
